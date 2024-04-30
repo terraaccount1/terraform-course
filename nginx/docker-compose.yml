@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  golang1:
+    container_name: golang-server-1
+    image: popov010/test:1.0
+    networks:
+      my-network:
+        ipv4_address: 10.5.0.10
+
+  golang2:
+    container_name: golang-server-2
+    image: popov010/test:1.0
+    networks:
+      my-network:
+        ipv4_address: 10.5.0.20
+
+  nginx:
+    container_name: nginx
+    image: my-nginx:1.0
+
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    networks:
+      my-network:
+        ipv4_address: 10.5.0.2
+
+    ports:
+      - "80:80"
+
+networks:
+  my-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/16
+          gateway: 10.5.0.1
