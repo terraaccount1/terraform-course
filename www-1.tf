@@ -1,12 +1,13 @@
 resource "digitalocean_droplet" "www-1" {
   image = "ubuntu-22-04-x64"
-  name = "web"
+  name = "www-1"
   region = "fra1"
   size = "s-2vcpu-2gb"
   ssh_keys = [
     data.digitalocean_ssh_key.terraform.id
   ]
   
+
   connection {
     host = self.ipv4_address
     user = "root"
