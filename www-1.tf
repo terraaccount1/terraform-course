@@ -1,6 +1,6 @@
 resource "digitalocean_droplet" "www-1" {
   image = "ubuntu-22-04-x64"
-  name = "www-2"
+  name = "web-server"
   region = "fra1"
   size = "s-2vcpu-2gb"
   ssh_keys = [
