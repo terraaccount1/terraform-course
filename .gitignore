@@ -1,2 +1,5 @@
 terraform.tfstate
 deploy
+.vscode/
+.terraform/*
+.gitignore
