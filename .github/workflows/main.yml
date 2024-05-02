@@ -20,6 +20,7 @@ jobs:
 
         - run: tofu init
 
-        - run: tofu plan --var "token=${{ secrets.TOKEN }}" --var "pvt_key=${{ secrets.SSH_KEY }} "
-        - run: tofu apply --var "token=${{ secrets.TOKEN }}" --var "pvt_key=${{ secrets.SSH_KEY }} " -auto-approve
+        - run: tofu plan --var "token=${{ secrets.TOKEN }}" --var "pvt_key=${{ secrets.SSH_KEY }} " -out deploy
+
+        - run: tofu apply "deploy"
 
