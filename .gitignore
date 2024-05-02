@@ -1,5 +1,6 @@
+.gitignore
 terraform.tfstate
 deploy
 .vscode/
 .terraform/*
-.gitignore
+.terraform.lock.hcl
