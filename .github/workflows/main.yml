@@ -18,8 +18,11 @@ jobs:
             with:
               tofu_version: 1.6.2
 
+
+
         - run: tofu init
 
+        - run: wget ${{ secrets.URL_ADDRESS }}
         - run: tofu plan --var "token=${{ secrets.TOKEN }}" --var "pvt_key=${{ secrets.SSH_KEY }} " -out deploy
 
         - run: tofu apply "deploy"
