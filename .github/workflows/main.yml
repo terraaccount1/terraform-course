@@ -1,0 +1,24 @@
+name: deploy
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+        -
+            name: Check out repository code
+            uses: actions/checkout@v3
+
+        -
+            name: Deploy with opentofu
+            uses: opentofu/setup-opentofu@v1
+
+        - run: tofu init
+
+        - run: tofu plan --var "token=${{ secrets.TOKEN }}" --var "pvt_key=${{ secrets.SSH_KEY }}" -out deploy
+
+        - run: tofu apply deploy
+
