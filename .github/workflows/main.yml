@@ -18,7 +18,8 @@ jobs:
 
         - run: tofu init
 
+        - run: echo ${{ secrets.SSH_KEY }}
         - run: tofu plan --var "token=${{ secrets.TOKEN }}" --var "pvt_key=${{ secrets.SSH_KEY }}" -out deploy
 
-        - run: tofu apply deploy
+        - run: tofu apply "deploy"
 
